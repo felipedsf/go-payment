@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  auth-db:
+    image: mysql:8.4
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: users
+    ports:
+      - '3306:3306'
+    volumes:
+      - auth-db-v:/var/lib/mysql
+
+  money-movement-db:
+    image: mysql:8.4
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: money_movement
+    ports:
+      - '3307:3306'
+    volumes:
+      - money-movement-db-v:/var/lib/mysql
+
+volumes:
+  auth-db-v:
+  money-movement-db-v:
