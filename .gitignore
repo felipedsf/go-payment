@@ -21,6 +21,9 @@
 # Binaries
 */bin
 
+# Idea
+.idea
+
 # Go workspace file
 go.work
 
