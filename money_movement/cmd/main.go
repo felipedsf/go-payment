@@ -3,8 +3,12 @@ package main
 import (
 	"database/sql"
 	"fmt"
+	mm "github.com/felipedsf/go-payment/money_movement/internal/impl"
+	pb "github.com/felipedsf/go-payment/money_movement/proto"
 	_ "github.com/go-sql-driver/mysql"
+	"google.golang.org/grpc"
 	"log"
+	"net"
 )
 
 const (
@@ -36,7 +40,19 @@ func main() {
 	}
 
 	// grpc server setup
-	//grpcServer := grpc.NewServer()
+	grpcServer := grpc.NewServer()
+	pb.RegisterMoneyMovementServiceServer(grpcServer, mm.NewGrpcMoneyMovement(db))
+
+	// listen & serve
+	listener, err := net.Listen("tcp", ":8000")
+	if err != nil {
+		log.Fatalf("Failed to listen on port 8000: %v", err)
+	}
+
+	log.Printf("server listening at %v", listener.Addr())
+	if err := grpcServer.Serve(listener); err != nil {
+		log.Fatalf("Failed to server: %v", err)
+	}
 
 	log.Print("Money movement is working!!!")
 }

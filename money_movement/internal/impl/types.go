@@ -18,8 +18,8 @@ type transaction struct {
 	pid                      string
 	srcUserID                string
 	dstUserID                string
-	srcAccountWalletID       string
-	dstAccountWalletID       string
+	srcAccountWalletID       int32
+	dstAccountWalletID       int32
 	srcAccountID             string
 	dstAccountID             string
 	srcAccountType           string
