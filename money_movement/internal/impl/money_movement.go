@@ -28,7 +28,7 @@ func NewGrpcMoneyMovement(db *sql.DB) *GrpcMoneyMovement {
 	}
 }
 
-func (this *GrpcMoneyMovement) Authorize(ctx context.Context, payload *pb.AuthorizePayload) (*pb.AuthorizeResponse, error) {
+func (this *GrpcMoneyMovement) Authorize(_ context.Context, payload *pb.AuthorizePayload) (*pb.AuthorizeResponse, error) {
 	if payload.GetCurrency() != "USD" {
 		return nil, status.Error(codes.InvalidArgument, "only accepts USD")
 	}
@@ -99,7 +99,7 @@ func (this *GrpcMoneyMovement) Authorize(ctx context.Context, payload *pb.Author
 	}, nil
 }
 
-func (this *GrpcMoneyMovement) Capture(ctx context.Context, in *pb.CapturePayload) (*emptypb.Empty, error) {
+func (this *GrpcMoneyMovement) Capture(_ context.Context, in *pb.CapturePayload) (*emptypb.Empty, error) {
 	tx, err := this.db.Begin()
 	if err != nil {
 		return nil, status.Error(codes.Internal, err.Error())
