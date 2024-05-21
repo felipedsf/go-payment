@@ -20,8 +20,8 @@ type transaction struct {
 	dstUserID                string
 	srcAccountWalletID       int32
 	dstAccountWalletID       int32
-	srcAccountID             string
-	dstAccountID             string
+	srcAccountID             int32
+	dstAccountID             int32
 	srcAccountType           string
 	dstAccountType           string
 	finalDstMerchantWalletID int32
