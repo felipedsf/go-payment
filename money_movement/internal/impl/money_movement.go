@@ -13,7 +13,7 @@ import (
 )
 
 const (
-	insertTransactionQuery = "INSERT INTO transaction (pid, src_user_id, dst_user_id, src_wallet_id, dst_wallet_id, src_wallet_type, dst_wallet_type, final_dst_merchant_wallet_id, amount) VALUES(?,?,?,?,?,?,?,?,?,?,?)"
+	insertTransactionQuery = "INSERT INTO transaction (pid, src_user_id, dst_user_id, src_wallet_id, dst_wallet_id, src_wallet_type, dst_wallet_type, final_dst_merchant_wallet_id, amount) VALUES(?,?,?,?,?,?,?,?,?)"
 	queryTransactionQuery  = "SELECT pid, src_user_id, dst_user_id, src_wallet_id, dst_wallet_id, src_wallet_type, dst_wallet_type, final_dst_merchant_wallet_id, amount FROM transaction WHERE pid=?"
 )
 
