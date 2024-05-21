@@ -8,12 +8,12 @@ RUN go mod tidy
 
 COPY . .
 
-RUN CGO_ENABLED=0 GOOS=linux go build -o movement ./cmd
+RUN CGO_ENABLED=0 GOOS=linux go build -o money ./cmd
 
 FROM alpine:latest
 
 WORKDIR /app
 
-COPY --from=builder /app/movement .
+COPY --from=builder /app/money .
 
-ENTRYPOINT ["./movement"]
+ENTRYPOINT ["./money"]
